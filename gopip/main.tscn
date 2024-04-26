@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://ui/nodes/graph_2d/graph_2d.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -9,5 +10,17 @@ script = ExtResource( 1 )
 margin_right = 12.0
 margin_bottom = 20.0
 text = "Start Serial Connection"
+
+[node name="Graph2D" parent="." instance=ExtResource( 2 )]
+margin_left = 17.0
+margin_top = 99.0
+margin_right = 237.0
+margin_bottom = 261.0
+
+[node name="Graph2D2" parent="." instance=ExtResource( 2 )]
+margin_left = 250.0
+margin_top = 75.0
+margin_right = 413.0
+margin_bottom = 164.0
 
 [connection signal="pressed" from="StartSerialButton" to="." method="_on_StartSerialButton_pressed"]

@@ -7,6 +7,7 @@ var _new_serial_data = JavaScript.create_callback(self, "new_serial_data")
 func _on_StartSerialButton_pressed():
 	# TODO: add filter to port selection to limit to compatible devices
 	# TODO: can the JavaScript code go in a .js file for clarity?
+	# TODO: fail gracefully on platforms without JavaScript (e.g. desktop)
 	JavaScript.eval("""
 	async function godotWebSerialStart(GD_new_serial_data) {
 		// open port selection dialog
@@ -53,3 +54,5 @@ func _on_StartSerialButton_pressed():
 func new_serial_data(args: Array):
 	var data = args[0]
 	print(data)
+
+

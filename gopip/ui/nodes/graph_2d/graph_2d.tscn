@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/nodes/graph_2d/graph_2d.gd" type="Script" id=1]
+[ext_resource path="res://ui/fonts/RobotoMono-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="Graph2D" type="Control"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+script = ExtResource( 1 )
+default_font = SubResource( 1 )
