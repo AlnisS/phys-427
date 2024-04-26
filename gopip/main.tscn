@@ -1,26 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://ui/nodes/graph_2d/graph_2d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/nodes/graph_2d/graph_2d_font.tres" type="DynamicFont" id=3]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="StartSerialButton" type="Button" parent="."]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_left = 31.0
+margin_top = 7.0
+margin_right = 187.0
+margin_bottom = 27.0
 text = "Start Serial Connection"
 
 [node name="Graph2D" parent="." instance=ExtResource( 2 )]
 margin_left = 17.0
-margin_top = 99.0
-margin_right = 237.0
-margin_bottom = 261.0
+margin_top = 77.0
+margin_right = 343.0
+margin_bottom = 275.0
+xmax = 100.0
+ymin = 0.0
+ymax = 5.0
+xlabel = "sample number"
+ylabel = "resistance (kOhm)"
 
-[node name="Graph2D2" parent="." instance=ExtResource( 2 )]
-margin_left = 250.0
-margin_top = 75.0
-margin_right = 413.0
-margin_bottom = 164.0
+[node name="Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 283.0
+margin_right = 113.0
+margin_bottom = 300.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "asdfasdfasdfsad"
 
 [connection signal="pressed" from="StartSerialButton" to="." method="_on_StartSerialButton_pressed"]

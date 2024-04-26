@@ -3,6 +3,17 @@ extends Spatial
 # callback to call when new serial data is available (i.e. a full line is read)
 var _new_serial_data = JavaScript.create_callback(self, "new_serial_data")
 
+var N := 100
+
+var data_loop: PoolVector2Array
+var data_loop_i := 0
+
+func _ready():
+	data_loop = PoolVector2Array()
+	data_loop.resize(N)
+	for i in range(N):
+		data_loop[i] = Vector2.ZERO
+
 
 func _on_StartSerialButton_pressed():
 	# TODO: add filter to port selection to limit to compatible devices
@@ -52,7 +63,13 @@ func _on_StartSerialButton_pressed():
 
 
 func new_serial_data(args: Array):
-	var data = args[0]
-	print(data)
+	var data: String = args[0]
+	var number = data.substr(1).to_float() / 1000.0
+	print(number)
+	data_loop[data_loop_i] = Vector2(data_loop_i, number)
+	data_loop_i += 1
+	if data_loop_i >= N:
+		data_loop_i = 0
+	$Graph2D.data = data_loop
 
 

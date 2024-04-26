@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/nodes/graph_2d/graph_2d.gd" type="Script" id=1]
-[ext_resource path="res://ui/fonts/RobotoMono-Regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 12
-font_data = ExtResource( 2 )
+[ext_resource path="res://ui/nodes/graph_2d/graph_2d_font.tres" type="DynamicFont" id=2]
 
 [node name="Graph2D" type="Control"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+mouse_filter = 2
 script = ExtResource( 1 )
-default_font = SubResource( 1 )
+default_font = ExtResource( 2 )
+xmax = 7.0
+ymin = 20.0
+ymax = 36.0
+data = PoolVector2Array( 0, 20, 1, 21, 2, 23, 3, 26, 4, 30, 5, 33, 6, 35, 7, 36 )
