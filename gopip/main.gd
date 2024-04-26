@@ -7,6 +7,7 @@ var N := 100
 
 var data_loop: PoolVector2Array
 var data_loop_i := 0
+var data_all_i := 0
 
 func _ready():
 	data_loop = PoolVector2Array()
@@ -62,14 +63,23 @@ func _on_StartSerialButton_pressed():
 	JavaScript.get_interface("godotWebSerialInterface").start(_new_serial_data)
 
 
+var data_collection_paused = false
+
 func new_serial_data(args: Array):
 	var data: String = args[0]
+	$"%SerialPortMonitorLabel".text += data + "\n"
+	if data_collection_paused:
+		return
+	
 	var number = data.substr(1).to_float() / 1000.0
-	print(number)
 	data_loop[data_loop_i] = Vector2(data_loop_i, number)
 	data_loop_i += 1
+	data_all_i += 1
 	if data_loop_i >= N:
 		data_loop_i = 0
-	$Graph2D.data = data_loop
+	$"%Graph2D".data = data_loop
+	$"%TableValueLabel".text += str(data_all_i) + "," + str(number) + "\n"
 
 
+func _on_PauseDataCollection_pressed():
+	data_collection_paused = not data_collection_paused
